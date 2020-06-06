@@ -1,0 +1,2 @@
+rootProject.name='RuTech'
+include ':app'
