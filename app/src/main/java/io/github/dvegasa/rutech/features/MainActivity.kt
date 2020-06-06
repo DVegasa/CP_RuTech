@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var vm: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         vm = ViewModelProvider(this).get(MainViewModel::class.java)
