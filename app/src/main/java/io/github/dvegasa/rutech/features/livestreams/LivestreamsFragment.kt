@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import io.github.dvegasa.rutech.R
+import io.github.dvegasa.rutech.features.MainViewModel
+import io.github.dvegasa.rutech.features.calling.CallingFragment
 import io.github.dvegasa.rutech.network.FakeRepo
 import kotlinx.android.synthetic.main.livestreams_fragment.*
 
@@ -21,8 +23,11 @@ class LivestreamsFragment : Fragment() {
     }
 
     private lateinit var vm: LivestreamsViewModel
+    private lateinit var vmMain: MainViewModel
 
     private lateinit var adapter: RvStreamsAdapter
+
+    var callingFragment: CallingFragment? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +43,11 @@ class LivestreamsFragment : Fragment() {
     }
 
     private fun initRvStreams() {
-        adapter = RvStreamsAdapter(viewLifecycleOwner, FakeRepo.streams)
+        val list = FakeRepo.streams
+        adapter = RvStreamsAdapter(viewLifecycleOwner, list) {pos ->
+            callingFragment = CallingFragment.newInstance(list.value?.get(pos)?.id ?: -1)
+            callingFragment!!.show(childFragmentManager, "calling")
+        }
         rvStreams.layoutManager = LinearLayoutManager(context)
         rvStreams.adapter = adapter
     }

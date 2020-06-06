@@ -1,14 +1,17 @@
 package io.github.dvegasa.rutech.features.livestreams
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import io.github.dvegasa.rutech.R
+import io.github.dvegasa.rutech.features.MainViewModel
 import io.github.dvegasa.rutech.network.FakeRepo
 import io.github.dvegasa.rutech.pojos.StreamData
 import kotlinx.android.synthetic.main.item_stream.view.*
@@ -16,7 +19,12 @@ import kotlinx.android.synthetic.main.item_stream.view.*
 /**
  * Created by Ed Khalturin @DVegasa
  */
-class RvStreamsAdapter(val lifecycleOwner: LifecycleOwner, val list: LiveData<List<StreamData>>) :
+
+
+class RvStreamsAdapter(
+    val lifecycleOwner: LifecycleOwner,
+    val list: LiveData<List<StreamData>>,
+    val callback: (Int) -> Unit) :
     RecyclerView.Adapter<RvStreamsAdapter.VH>() {
 
     init {
@@ -34,6 +42,11 @@ class RvStreamsAdapter(val lifecycleOwner: LifecycleOwner, val list: LiveData<Li
                     tvTime.text = data.time
                     tvSpeaker.text = data.speaker
                     ivAva.setImageResource(FakeRepo.avaMap.getValue(data.ava))
+
+                    clStream.setOnClickListener {
+                        Log.d("ed__", "RvStreamAdapter click triggered")
+                        callback(pos)
+                    }
                 }
             }
         }

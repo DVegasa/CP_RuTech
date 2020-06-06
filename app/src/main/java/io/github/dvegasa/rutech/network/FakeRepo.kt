@@ -22,16 +22,19 @@ object FakeRepo {
     val streams = MutableLiveData(
         listOf(
             StreamData(
+                0,
                 "Home matters: Spatial Computing in everyday spaces",
                 "EDUARD KHALTURIN",
                 "15:00 - 15:50",
                 0
             ), StreamData(
+                1,
                 "Transforming Online Learning: Covid-19 and Beyond",
                 "SHRAVAN GOLI ",
                 "16:00 - 16:50",
                 1
             ), StreamData(
+                2,
                 "Making cool android apps in 2k20",
                 "ELENA VOLKOVA",
                 "16:00 - 16:50",
