@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import io.github.dvegasa.rutech.R
 import io.github.dvegasa.rutech.pojos.StreamData
+import io.github.dvegasa.rutech.pojos.UserData
 
 /**
  * Created by Ed Khalturin @DVegasa
@@ -17,6 +18,14 @@ object FakeRepo {
         2 to R.drawable.face2,
         3 to R.drawable.face3,
         4 to R.drawable.face4
+    )
+
+    val users = arrayOf(
+        UserData(0, "Eduard"),
+        UserData(1, "Dmitry"),
+        UserData(2, "Olga"),
+        UserData(3, "Muhammed"),
+        UserData(4, "Nikolay")
     )
 
     val streams = MutableLiveData(

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/llUser"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp">
+
+    <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivYellow"
+                android:layout_width="92dp"
+                android:layout_height="92dp"
+                android:layout_gravity="center"
+                android:visibility="invisible"
+                android:src="@color/yellow" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivAva"
+                android:layout_width="82dp"
+                android:layout_height="82dp"
+                android:layout_gravity="center"
+                android:src="@drawable/face3" />
+    </FrameLayout>
+
+    <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:maxLength="20"
+            android:textSize="16sp"
+            android:text="Marina" />
+
+</LinearLayout>
