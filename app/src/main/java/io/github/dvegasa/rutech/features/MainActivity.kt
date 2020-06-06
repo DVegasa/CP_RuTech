@@ -3,6 +3,9 @@ package io.github.dvegasa.rutech.features
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
@@ -19,6 +22,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         vm = ViewModelProvider(this).get(MainViewModel::class.java)
         initBnav()
+        vm.curScreen.observe(this, Observer { value ->
+            changeFragment(value)
+        })
+    }
+
+    private fun changeFragment(value: Int) {
+        val frag: Fragment = when (value) {
+            0 -> vm.fragSearch
+            1 -> vm.fragStreams
+            else -> vm.fragContacts
+        }
+        supportFragmentManager.beginTransaction().apply {
+            replace(flContent.id, frag)
+            commit()
+        }
     }
 
     private fun initBnav() {
